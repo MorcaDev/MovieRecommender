@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine</title>
+    <link rel="stylesheet" href="{% static './recommender.css' %}">
+    <link rel="shortcut icon" href="{% static './logo.ico' %}" type="image/x-png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+<body>
+    <!-- title -->
+    <header>
+        <h1>Movie Recommender System</h1>
+    </header>
+
+    <!-- content -->
+    <main>
+        <!-- form -->
+        <div class="form">
+            <form action="" method="post">
+                {% csrf_token %}
+                <span>Select movie from dropdown</span>
+                <select name="movie_title">
+                    {% for movie_title in titles %}
+                    <option value="{{movie_title}}">{{movie_title}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Show Recommendations</button>
+            </form>
+        </div>
+
+        <!-- movie selected -->
+        {% if selected_movie %}
+        <div class="selected">
+            <!-- poster -->
+            <div class="poster_cotainer">
+                {% if selected_movie.image %}
+                <img src="{{selected_movie.image}}" alt="poster of movie selected">
+                {% else %}
+                <img src="{% static 'notfound.png'%}" alt="not found image poster">
+                {% endif %}
+            </div> 
+            <!-- description -->
+            <div class="description_container">
+                <h2>{{selected_movie.title}}</h2>
+                <p class="synopsis">{{selected_movie.synapsis}}</p>
+                <ul class="genres">
+                    {% for genre in selected_movie.genres %}
+                        <li>{{genre}}</li>
+                    {% endfor %}
+                </ul>
+                <ul class="keyword">
+                    {% for keyword in selected_movie.keywords %}
+                        <li>{{keyword}}</li>
+                    {% endfor %}
+                </ul>
+                <ul class="cast">
+                    {% for actor in selected_movie.cast %}
+                        <li>{{actor}}</li>
+                    {% endfor %}
+                </ul>
+                <ul class="director">
+                    {% for director in selected_movie.director %}
+                        <li>{{director}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- star rate -->
+            <div class="star_container">
+                <div class="rating-box">
+                    <h3>Rating</h3>
+                    <div class="stars">
+                        {% for star in selected_movie.rating %}
+                            {% if star == 1 %}
+                            <i class="fa-solid fa-star active"></i>
+                            {% else %}
+                            <i class="fa-solid fa-star"></i>
+                            {% endif %}
+                        {% endfor %}                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- recomendations -->
+        {% if recomendations %}
+        <div class="recomendations">
+            <!-- banner -->
+            <div class="recomendations_banner">
+                <h2>Our Recomendations</h2>
+                <span></span>
+            </div>
+            <!-- container -->
+            <div class="recomendations_container">
+                {% for recomendation in recomendations %}
+                <div class="movie">
+                    <h3>{{recomendation.title}}</h3>
+                    {% if recomendation.image %}
+                    <img src="{{recomendation.image}}" alt="poster of movie recommended">
+                    {% else %}
+                    <img src="{% static 'notfound.png'%}" alt="not found image poster">
+                    {% endif %}
+                    <div class="percentage">
+                        <p>{{recomendation.percetange}}<span></span></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
