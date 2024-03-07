@@ -57,7 +57,7 @@ def fetch_poster(title):
         title_id    = data["results"][0]["id"]
 
         # to get POSTER of a movie
-        url         = "https://api.themoviedb.org/3/movie/{}?api_key=person_key_from__&language=en-US".format(title_id)
+        url         = "https://api.themoviedb.org/3/movie/{}?api_key=[personal_api_key_from_tmd]&language=en-US".format(title_id)
         data        = requests.get(url)
         data        = data.json()
         poster_path = data['poster_path']
