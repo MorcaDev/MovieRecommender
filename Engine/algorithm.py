@@ -3,12 +3,14 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+# venv variables
+from decouple import config
+
 # module used to get images
 import requests
 
 # reading dataset of movies
 df = pd.read_csv("movie_dataset.csv")
-
 
 # Setting attributes as "content" to describe better a movie
 def combine_features(row):
@@ -51,13 +53,13 @@ def fetch_poster(title):
     try:
 
         # to get ID of a movie
-        url         = "http://api.themoviedb.org/3/search/movie?api_key=[personal_api_key_from_tmd]&language=en-US&query={}".format(title_format)
+        url         = f'http://api.themoviedb.org/3/search/movie?api_key={config("api_key")}&language=en-US&query={title_format}'
         data        = requests.get(url)
         data        = data.json()
         title_id    = data["results"][0]["id"]
 
         # to get POSTER of a movie
-        url         = "https://api.themoviedb.org/3/movie/{}?api_key=[personal_api_key_from_tmd]&language=en-US".format(title_id)
+        url         = f'https://api.themoviedb.org/3/movie/{title_id}?api_key={config("api_key")}&language=en-US'
         data        = requests.get(url)
         data        = data.json()
         poster_path = data['poster_path']

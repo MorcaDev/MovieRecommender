@@ -2,8 +2,19 @@
 ![Banner](https://github.com/MorcaDev/MovieRecommender/blob/master/Assets/banner.png "Movie Recommender")
 
 ## Project Description
-Stop watching movies you don't like 😔  
-Get the best 5 recomendations of a movie based on its content✨ 
+Movie Recommender using AI.
+Stop watching movies you don't like 😔  .
+Get the best 5 recomendations of a movie based on its content✨ .
+
+## Features
+> Responsive website 
+> Interactive button to generate 5 recomendations  
+> Visual feedback of movie selected  
+> Recomendations with posters from an API   
+> Percentage of compatibility among movies  
+
+![Desktop](https://github.com/MorcaDev/MovieRecommender/blob/master/Assets/desktop.gif)
+![Mobile](https://github.com/MorcaDev/MovieRecommender/blob/master/Assets/mobile.gif)
 
 ## Tech
 - [Python](https://www.python.org/) - Programming Language 
@@ -15,21 +26,11 @@ Get the best 5 recomendations of a movie based on its content✨
 - [Git](https://git-scm.com/) - Version Control System
 
 ## Installation
-Install libraries and packages (sklearn - django) then clone the repo and enjoy the recommender.
+Clone the repo, install libraries and packages using requeriments.txt then enjoy the recommender.
 
 ```sh
 git clone https://github.com/MorcaDev/MovieRecommender.git
 ```
-
-## Features
-> Responsive website where you can find all titles you like  
-> Interactive button to generate 5 recomendations  
-> Visual feedback of movie selected  
-> Recomendations with posters from an API   
-> Percentage of compatibility among movies  
-
-![color picker](https://github.com/MorcaDev/MovieRecommender/blob/master/Assets/desktop.gif)
-![color picker](https://github.com/MorcaDev/MovieRecommender/blob/master/Assets/mobile.gif)
 
 ## Note
 1. You must create your account on [TMDB](https://www.themoviedb.org/) to get your personal token to fecth posters (thanks TMDB for the free resource 😎)
@@ -39,5 +40,5 @@ git clone https://github.com/MorcaDev/MovieRecommender.git
 It's completely possible to use this engine for a book,music, ... or any type of recommender, you may change features which determine the content of an item to generate recomendations. This website use a direct aplication of the recomender ; however, most of the time this is just a feature that is part of some other programs, think about Netflix, Hbo and other. No limits 👍
 
 ## License
-@morcadev
-**Free Software, Hell Yeah!**
+**@morcadev**
+
